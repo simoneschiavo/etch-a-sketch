@@ -35,7 +35,12 @@ createGrid(16);
 const gridButton = document.querySelector(".gridButton");
 
 gridButton.addEventListener("click", () => {
-    const numOfSquares = prompt("How many squares per row do you want?", "");
+    let numOfSquares = prompt("How many squares per row do you want?", "");
+
+    if (typeof numOfSquares != "number" || numOfSquares > 100 || numOfSquares < 1) {
+        numOfSquares = prompt("Last chance - Input a number between 1 and 100", "");
+    };
+
     grid.remove();
     createGrid(numOfSquares);
 });
