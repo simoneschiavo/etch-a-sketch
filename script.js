@@ -37,7 +37,7 @@ const gridButton = document.querySelector(".gridButton");
 gridButton.addEventListener("click", () => {
     let numOfSquares = prompt("How many squares per row do you want?", "");
 
-    if (typeof numOfSquares != "number" || numOfSquares > 100 || numOfSquares < 1) {
+    if (typeof numOfSquares != "number" || numOfSquares > 101 || numOfSquares < 1) {
         numOfSquares = prompt("Last chance - Input a number between 1 and 100", "");
     };
 
