@@ -18,7 +18,7 @@ function createGrid(squares) {
             square.classList.toggle("square");
             square.style.height = `${960 / squares}px`;
             square.addEventListener("mouseover", () => {
-              square.style.backgroundColor = "black";
+              square.style.backgroundColor = randomRGBGenerator();
             });
             square.addEventListener("mouseout", () => {
               square.style.backgroundColor = "white";
@@ -39,3 +39,12 @@ gridButton.addEventListener("click", () => {
     grid.remove();
     createGrid(numOfSquares);
 });
+
+// Random RBG generator
+function randomRGBGenerator() {
+    const r = Math.floor(Math.random() * 256);
+    const g = Math.floor(Math.random() * 256);
+    const b = Math.floor(Math.random() * 256);
+
+    return `rgb(${r} ${g} ${b})`;
+}
