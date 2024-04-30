@@ -1,6 +1,5 @@
 const container = document.querySelector(".container");
 let grid;
-let square = document.createElement("div");
 
 // Create a grid
 function createGrid(squares) {
@@ -15,9 +14,15 @@ function createGrid(squares) {
         grid.appendChild(row);
 
         for (let j = 1; j <= squares; j++) {
-            square = document.createElement("div");
+            const square = document.createElement("div");
             square.classList.toggle("square");
             square.style.height = `${960 / squares}px`;
+            square.addEventListener("mouseover", () => {
+              square.style.backgroundColor = "black";
+            });
+            square.addEventListener("mouseout", () => {
+              square.style.backgroundColor = "white";
+            });
             row.appendChild(square);
         };
     };
@@ -26,14 +31,11 @@ function createGrid(squares) {
 // Initialize the page with a 16x16 grid
 createGrid(16);
 
-// Change background color on hover
-const squares = document.querySelectorAll(".square");
+// Create new grid based on the user input
+const gridButton = document.querySelector(".gridButton");
 
-squares.forEach((square) => {
-    square.addEventListener("mouseover", () => {
-        square.style.backgroundColor = "black";
-    });
-    square.addEventListener("mouseout", () => {
-        square.style.backgroundColor = "white";
-    });
+gridButton.addEventListener("click", () => {
+    const numOfSquares = prompt("How many squares per row do you want?", "");
+    grid.remove();
+    createGrid(numOfSquares);
 });
